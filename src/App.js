@@ -32,13 +32,15 @@ class App extends Component {
   }
 
   addTrack(track) {
-    console.log('Calling addTrack. Current value of track: ' + track);
-    this.addTrack = this.addTrack.bind(this);
-    if(track.id === this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
+
+    console.log('Calling addTrack. Current value of track: ' + JSON.stringify(track) + ', current value of this = ' + JSON.stringify(this));
+
+    if(this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
       return;
     } else {
       this.setState({tracks: track});
     }
+    this.addTrack = this.addTrack.bind(this);
   }
 
   render() {
